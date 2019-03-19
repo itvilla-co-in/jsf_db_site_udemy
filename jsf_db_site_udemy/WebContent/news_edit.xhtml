@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ck="http://code.google.com/ck-jsf-editor">
+      
+      <h:body>
+      
+      	<ui:composition template="/templates/template.xhtml">
+      	
+      		<ui:define name="content">
+      		
+      			<c:if test="${item.success == 1}">
+      				<div class="success">You have successfully saved your entry!</div>
+      			</c:if>
+      			<c:if test="${item.success == -1}">
+      				<div class="error">An error has occured!</div>
+      			</c:if>
+      			
+      			<h1>Entry edit <br /><a href="news_edit.xhtml" class="lab_btn">Add new</a></h1>
+      			
+      			<f:metadata>
+      				<f:viewParam id="id" name="id" value="#{item.id}" />
+      				<f:viewAction action="#{item.getId}" />
+      			</f:metadata>
+      			<h:form enctype="multipart/form-data" class="entry" name="news" id="news" action="" method="post">
+      				<input type="hidden" name="e_id" id="e_id" value="" />
+      				
+      				<div class="box-75">
+      				
+      					<label for="title_hr">Title <span>(HR)</span></label>
+      					<h:inputText class="" name="title_hr" id="title_hr" value="${item.title_hr}" />
+      					
+      					<label for="title_en">Title <span>(EN)</span></label>
+      					<h:inputText class="" name="title_en" id="title_en" value="${item.title_en}" />
+      					
+      					<label for="title_de">Title <span>(DE)</span></label>
+      					<h:inputText class="" name="title_de" id="title_de" value="${item.title_de}" />
+      					
+      					<div class="tabs">
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '1');" id="tab_hr" class="tb_1 slc">Text <span>(HR)</span></a>
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '1');" id="tab_en" class="tb_1">Text <span>(EN)</span></a>
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '1');" id="tab_de" class="tb_1">Text <span>(DE)</span></a>
+      					</div>
+      					
+      					<div class="tabs-content">
+      						<div class="editor_1 slc" id="tab_hr_content">
+      							<ck:editor id="text1_hr" name="text1_hr" value="#{item.text1_hr}" />
+      						</div>
+      						<div class="editor_1 none_display" id="tab_en_content">
+      							<ck:editor id="text1_en" name="text1_en" value="#{item.text1_en}" />
+      						</div>
+      						<div class="editor_1 none_display" id="tab_de_content">
+      							<ck:editor id="text1_de" name="text1_de" value="#{item.text1_de}" />
+      						</div>
+      					</div>
+      				
+      				</div>
+      				
+      				<div class="clearfix"></div>
+      				
+      				<div class="save">
+      					<div class="submit-wrapper">
+      						<h:commandButton name="spremi3" class="spremi_s" value="Save" action="#{item.save(0)}">
+      						</h:commandButton>
+      					</div>
+      					<div class="submit-wrapper">
+      						<h:commandButton name="spremi2" class="spremi_pr" value="Save and list all" action="#{item.save(1)}">
+      						</h:commandButton>
+      					</div>
+      				</div>
+      			
+      			</h:form>
+      		
+      		</ui:define>
+      	
+      	</ui:composition>
+      
+      </h:body>
+      
+</html>

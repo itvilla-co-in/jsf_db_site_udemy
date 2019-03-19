@@ -1,0 +1,139 @@
+body {
+	padding:15px;
+}
+
+h1{
+	margin:10px 0 25px;
+}
+
+.container{
+	background:#f1f1f1;
+	position:relative;
+}
+
+.header{
+	height:60px;
+}
+
+.menu-toggle{
+	display:none;
+}
+
+.site-info{
+	top:10px;
+	left:10px;
+}
+
+.site-info .logo{
+	height:40px;
+	width:40px;
+}
+
+.site-info a.title{
+	font-size:16px;
+	color:#e6e6e6;
+	margin-top:13px;
+	height:auto;
+	width:auto;
+}
+
+.site-info a.title:hover{
+	color:#7AC143;
+}
+
+.site-info a.title img{
+	display:none;
+}
+
+.site-info a.title span{
+	display:inline-block;
+}
+
+.user-info{
+	min-width:225px;
+	top:10px;
+	right:15px;
+}
+
+.user-info span{
+	display:inline-block;
+}
+
+.user-info .avatar{
+	height:40px;
+	width:40px;
+	margin-right:15px;
+}
+
+.user-info .avatar span{
+	height:40px;
+	width:40px;
+}
+
+.user-info a{
+	display:inline;
+}
+
+.logout{
+	display:none;
+}
+
+.menu{
+	display:block;
+	top:60px;
+	bottom:0px;
+	-moz-box-shadow:    none;
+	-webkit-box-shadow: none;
+	box-shadow:         none;
+}
+
+.menu ul li ul.sub{
+	padding:10px 0;
+}
+
+.menu ul li ul.sub li a{
+	padding:5px 10px 5px 38px;
+}
+
+.content{
+	padding:20px 20px 20px 240px;
+}
+
+.menu{
+	padding-bottom:81px;
+}
+
+.menu .company-logo{
+	display:block;
+}
+
+.box-50{
+	padding:20px;
+	margin-bottom:20px;
+}
+
+.box-25{
+	margin-bottom:20px;
+}
+
+.save{
+	bottom:0px;
+	right:28px;
+	width:auto;
+	left:auto;
+	padding:3px 3px 6px 3px;
+	border-top-left-radius:5px;
+	-moz-border-top-left-radius:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	-moz-border-top-right-radius:5px;
+	-webkit-border-top-right-radius:5px;
+}
+
+.footer{
+	display:none;
+}
+
+.entry input:not([type='submit']), .entry textarea{
+	width:456px;
+}

@@ -1,0 +1,70 @@
+.box-50{
+	width:49%;
+	margin-right:2%;
+}
+
+.box-50.last{
+	margin-right:0;
+}
+
+.box-75{
+	width:74%;
+	float:left;
+	margin-right:2%;
+}
+
+.statistics{
+	margin-right:0;
+}
+
+.entry .box-25{
+	width:24%;
+	margin-right:0;
+}
+
+.entry .box-25 select{
+	width:91%;
+}
+
+.entry .box-25 .datum select{
+	width:31.5%;
+}
+
+.entry .box-25 input[type="text"]{
+	width:91%;
+}
+
+.box-25 iframe{
+	width:91%;
+}
+
+.table-wrapper{
+	border-right:none;
+}
+
+table.list{
+	width:100%;
+}
+
+.cat-list-header div.naslov, .cat-list li div.naslov{
+	width:40%;
+}
+
+.entry-dokument{
+	width:16%;
+	margin:15px 2%;
+	float:left;
+	position:relative;
+}
+
+.file-sort .ui-state-highlight{
+	width:16%;
+}
+
+.img-selection-container .img-select{
+	width:20%;
+}
+
+.entry input:not([type='submit']), .entry textarea{
+	width:716px;
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+      <h:head>
+      	<ui:insert name="head_tag">
+      		<ui:include src="/templates/head_tag.xhtml" />
+      	</ui:insert>
+      </h:head>
+      
+      <h:body>
+      
+      	<div class="container">
+      	
+      		<div class="header">
+      			<ui:insert name="header">
+      				<ui:include src="/templates/header.xhtml" />
+      			</ui:insert>
+      		</div>
+      		
+      		<div class="menu">
+      			<ui:insert name="menu">
+      				<ui:include src="/templates/menu.xhtml" />
+      			</ui:insert>
+      		</div>
+      		
+      		<div class="content">
+      			<ui:insert name="content">
+      				<ui:include src="/templates/content.xhtml" />
+      			</ui:insert>
+      		</div>
+      		
+      		<div class="footer">
+      			<ui:insert name="footer">
+      				<ui:include src="/templates/footer.xhtml" />
+      			</ui:insert>
+      		</div>
+      		
+      		<div class="version">
+      			Version: 1.0
+      		</div>
+      	
+      	</div>
+      
+      </h:body>
+      
+</html>

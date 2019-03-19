@@ -1,0 +1,68 @@
+h1 .lab_btn{
+	top:-2px;
+	margin-left:15px;
+}
+
+h1 br{
+	display:none;
+}
+
+a.lab_btn-upload:link, a.lab_btn-upload:visited{
+	top:-2px;
+	display:inline-block;
+	margin-bottom:0px;
+	margin-left:15px;
+}
+
+.box-50.welcome{
+	background:#ffffff url("../../images/welcome.png") no-repeat left top;
+	padding-left:190px;
+}
+
+.statistics{
+	background:#ffffff url("../../images/statistics.png") no-repeat 90% 50px;
+}
+
+.statistics table{
+	width:70%;
+}
+
+table.list, ul.list{
+	width:180%;
+}
+
+table.list tbody tr td.naslov{
+	width:30%;
+}
+
+table.list.media tbody tr td.naslov{
+	width:35%;
+}
+
+.entry-image{
+	width:23%;
+	margin:15px 1%;
+	float:left;
+	position:relative;
+}
+
+.image-sort .ui-state-highlight{
+	width:23%;
+	margin:15px 1%;	
+}
+
+.entry-dokument{
+	width:21%;
+	margin:15px 2%;
+	float:left;
+	position:relative;
+}
+
+.file-sort .ui-state-highlight{
+	width:21%;
+	margin:15px 2%;	
+}
+
+.entry input:not([type='submit']), .entry textarea{
+	width:440px;
+}

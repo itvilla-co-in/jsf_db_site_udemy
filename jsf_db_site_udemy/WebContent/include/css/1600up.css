@@ -1,0 +1,41 @@
+.box-50{
+	width:49%;
+	margin-right:2%;
+}
+
+.box-50.last{
+	margin-right:0;
+}
+
+.box-25{
+	width:23.5%;
+	margin-right:2%;
+}
+
+.box-25.drugi{
+	margin-right:2%;
+}
+
+.statistics table{
+	width:70%;
+}
+
+.entry .box-25 select{
+	width:94%;
+}
+
+.entry .box-25 .datum select{
+	width:32.2%;
+}
+
+.entry .box-25 input[type="text"]{
+	width:94%;
+}
+
+.box-25 iframe{
+	width:94%;
+}
+
+.entry input:not([type='submit']), .entry textarea{
+	width:954px;
+}

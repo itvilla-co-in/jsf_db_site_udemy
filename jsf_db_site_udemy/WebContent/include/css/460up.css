@@ -1,0 +1,11 @@
+.instructions{
+	width:50%;
+}
+
+.filters .broj-entrya{
+	display:inline-block;
+}
+
+.entry input:not([type='submit']), .entry textarea{
+	width:340px;
+}

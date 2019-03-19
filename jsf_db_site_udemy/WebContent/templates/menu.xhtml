@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jstl/core">
+      
+      <body>
+      
+      	<ui:composition>
+      		<c:if test="${(item.page_link == '/') || (item.page_link == '/index.xhtml')}">
+      			<c:set value="mslc" var="mslc1"></c:set>
+      		</c:if>
+      		<ul>
+      			<li class="${mslc1}">
+      				<a class="homepage" href="index.xhtml"><span>Home</span></a>
+      			</li>
+      			
+      			<!-- items -->
+      			<c:if test="${(item.page_link == '/items_edit.xhtml') || (item.page_link == '/items_view.xhtml')}">
+      				<c:set value="mslc" var="mslc2"></c:set>
+      				<c:set value="display:block;" var="display_block"></c:set>
+      			</c:if>
+      			<c:if test="${(item.page_link == '/items_edit.xhtml')}">
+      				<c:set value="mslc" var="class_entry"></c:set>
+      			</c:if>
+      			<c:if test="${(item.page_link == '/items_view.xhtml')}">
+      				<c:set value="mslc" var="class_pregled"></c:set>
+      			</c:if>
+      			<li class="${mslc2}">
+      				<a class="news" href="items_edit.xhtml">
+      					<span>Items</span>
+      				</a>
+      				<ul class="sub" style="${display_block}">
+      					<li class="${class_entry}"><a href="items_edit.xhtml">Enter new</a></li>
+      					<li class="${class_pregled}"><a href="items_view.xhtml">View entered</a></li>
+      				</ul>
+      			</li>
+      			
+      			<!-- news -->
+      			<c:if test="${(item.page_link == '/news_edit.xhtml') || (item.page_link == '/news_view.xhtml')}">
+      				<c:set value="mslc" var="mslc3"></c:set>
+      				<c:set value="display:block;" var="display_block3"></c:set>
+      			</c:if>
+      			<c:if test="${(item.page_link == '/news_edit.xhtml')}">
+      				<c:set value="mslc" var="class_entry3"></c:set>
+      			</c:if>
+      			<c:if test="${(item.page_link == '/news_view.xhtml')}">
+      				<c:set value="mslc" var="class_pregled3"></c:set>
+      			</c:if>
+      			<li class="${mslc3}">
+      				<a class="pages" href="news_edit.xhtml">
+      					<span>News</span>
+      				</a>
+      				<ul class="sub" style="${display_block3}">
+      					<li class="${class_entry3}"><a href="news_edit.xhtml">Enter new</a></li>
+      					<li class="${class_pregled3}"><a href="news_view.xhtml">View list</a></li>
+      				</ul>
+      			</li>
+      			
+      			<!-- references -->
+      			<c:if test="${(item.page_link == '/reference_edit.xhtml') || (item.page_link == '/reference_view.xhtml')}">
+      				<c:set value="mslc" var="mslc4"></c:set>
+      				<c:set value="display:block;" var="display_block4"></c:set>
+      			</c:if>
+      			<c:if test="${(item.page_link == '/reference_edit.xhtml')}">
+      				<c:set value="mslc" var="class_entry4"></c:set>
+      			</c:if>
+      			<c:if test="${(item.page_link == '/reference_view.xhtml')}">
+      				<c:set value="mslc" var="class_pregled4"></c:set>
+      			</c:if>
+      			<li class="${mslc4}">
+      				<a class="news" href="reference_edit.xhtml">
+      					<span>References</span>
+      				</a>
+      				<ul class="sub" style="${display_block4}">
+      					<li class="${class_entry4}"><a href="reference_edit.xhtml">Enter new</a></li>
+      					<li class="${class_pregled4}"><a href="reference_view.xhtml">View list</a></li>
+      				</ul>
+      			</li>
+      			
+      			<!-- contact -->
+      			<c:if test="${(item.page_link == '/contact_edit.xhtml')}">
+      				<c:set value="mslc" var="mslc5"></c:set>
+      				<c:set value="display:block;" var="display_block5"></c:set>
+      			</c:if>
+      			<c:if test="${(item.page_link == '/contact_edit.xhtml')}">
+      				<c:set value="mslc" var="class_entry5"></c:set>
+      			</c:if>
+      			<c:if test="${(item.page_link == '/contact_view.xhtml')}">
+      				<c:set value="mslc" var="class_pregled5"></c:set>
+      			</c:if>
+      			<li class="${mslc5}">
+      				<a class="news" href="contact_edit.xhtml?action=update&amp;id=1">
+      					<span>Contact</span>
+      				</a>
+      				<ul class="sub" style="${display_block5}">
+      					<li class="${class_entry5}"><a href="contact_edit.xhtml?action=update&amp;id=1">Enter new and view</a></li>
+      				</ul>
+      			</li>
+      			
+      			<a class="company-logo" href="http://mywebsite.com" target="_blank"><img src="images/company-logo.png" alt="My company" /></a>
+      			
+      		</ul>
+      		
+      	</ui:composition>
+      
+      </body>
+</html>

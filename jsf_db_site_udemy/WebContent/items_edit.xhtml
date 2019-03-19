@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ck="http://code.google.com/ck-jsf-editor">
+      
+      <h:body>
+      
+      	<ui:composition template="/templates/template.xhtml">
+      	
+      		<ui:define name="content">
+      		
+      			<c:if test="${item.success == 1}">
+      				<div class="success">You have successfully saved your entry!</div>
+      			</c:if>
+      			<c:if test="${item.success == -1}">
+      				<div class="error">An error has occured!</div>
+      			</c:if>
+      			
+      			<h1>Entry edit <br /><a href="items_edit.xhtml" class="lab_btn">Add new</a></h1>
+      			
+      			<f:metadata>
+      				<f:viewParam id="id" name="id" value="#{item.id}" />
+      				<f:viewAction action="#{item.getId}" />
+      			</f:metadata>
+      			<h:form enctype="multipart/form-data" class="entry" name="items" id="items" action="" method="post">
+      				<input type="hidden" name="e_id" id="e_id" value="" />
+      				
+      				<div class="box-75">
+      				
+      					<label for="title_hr">Title <span>(HR)</span></label>
+      					<h:inputText class="" name="title_hr" id="title_hr" value="${item.title_hr}" />
+      					
+      					<label for="title_en">Title <span>(EN)</span></label>
+      					<h:inputText class="" name="title_en" id="title_en" value="${item.title_en}" />
+      					
+      					<label for="title_de">Title <span>(DE)</span></label>
+      					<h:inputText class="" name="title_de" id="title_de" value="${item.title_de}" />
+      					
+      					<div class="tabs">
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '1');" id="tab_hr" class="tb_1 slc">Description <span>(HR)</span></a>
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '1');" id="tab_en" class="tb_1">Description <span>(EN)</span></a>
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '1');" id="tab_de" class="tb_1">Description <span>(DE)</span></a>
+      					</div>
+      					
+      					<div class="tabs-content">
+      						<div class="editor_1 slc" id="tab_hr_content">
+      							<ck:editor id="text1_hr" name="text1_hr" value="#{item.text1_hr}" />
+      						</div>
+      						<div class="editor_1 none_display" id="tab_en_content">
+      							<ck:editor id="text1_en" name="text1_en" value="#{item.text1_en}" />
+      						</div>
+      						<div class="editor_1 none_display" id="tab_de_content">
+      							<ck:editor id="text1_de" name="text1_de" value="#{item.text1_de}" />
+      						</div>
+      					</div>
+      					
+      					<div class="tabs2">
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '2');" id="tab2_hr" class="tb_2 slc">Appliance <span>(HR)</span></a>
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '2');" id="tab2_en" class="tb_2">Appliance <span>(EN)</span></a>
+      						<a href="javascript:;" onclick="txt_tabs(this.id, '2');" id="tab2_de" class="tb_2">Appliance <span>(DE)</span></a>
+      					</div>
+      					
+      					<div class="tabs-content">
+      						<div class="editor_2 slc" id="tab2_hr_content">
+      							<ck:editor id="text2_hr" name="text2_hr" value="#{item.text2_hr}" />
+      						</div>
+      						<div class="editor_2 none_display" id="tab2_en_content">
+      							<ck:editor id="text2_en" name="text2_en" value="#{item.text2_en}" />
+      						</div>
+      						<div class="editor_2 none_display" id="tab2_de_content">
+      							<ck:editor id="text2_de" name="text2_de" value="#{item.text2_de}" />
+      						</div>
+      					</div>
+      					
+      					<div class="box-100 light">
+      						<a class="toggle" href="javascript:;">Open / Close</a>
+      						<h3>Images</h3>
+      						<c:if test="${item.id > 0}">
+      							<p:fileUpload update="refreshMe"
+      								mode="advanced" dragDropSupport="true" multiple="true"
+      								fileUploadListener="#{operations.handleFileUpload}"
+      								sizeLimit="10000000" fileLimit="300"
+      								allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
+      								label="Choose" uploadLabel="Save" cancelLabel="Cancel"
+      								invalidFileMessage="Unauthorized file"
+      								invalidSizeMessage="Invalid file size"
+      								fileLimitMessage="Uploaded file limit reached">
+      								<f:attribute name="table_id" value="#{item.id}" />
+      								<f:attribute name="type" value="image" />
+      								<f:attribute name="sizes" value="800,600,400,300" />
+      							</p:fileUpload>
+      							
+      							<h:panelGroup layout="block" id="refreshMe">
+      								<ui:repeat var="it" value="#{operations.get_photos()}">
+      									<div id="images-holder_#{it.image_id}" class="image-sort ui-sortable">
+      										<div id="img_holder_#{it.image_id}" class="entry-image" style="height:150px;">
+      											<h:graphicImage class="images_all" height="90" value="#{operations.sitepath_photos}#{it.image_title}?t=#{operations.currentTimeInMillis}" cache="false">
+      											</h:graphicImage>
+      											<p:commandLink class="del_img" title="Delete" actionListener="#{operations.deleteImagesData()}" onclick="if(!confirm('Are you sure you want to delete entry?')) return false;" oncomplete="$('#images-holder_#{it.image_id}').fadeOut();">
+	      											<f:param name="image_id" value="#{it.image_id}" />
+	      											<f:param name="image_title" value="#{it.image_title}" />
+	      											<p:ajax execute="@form" render="@form" />
+	      											<img src="images/icon-delete-round.png" alt="Delete" />
+      											</p:commandLink>
+      										</div>
+      									</div>
+      								</ui:repeat>
+      								<h:panelGroup layout="block" rendered="#{operations.data_view == '[]'}">
+      									<div class="no_entry">Currently you don't have any images.</div>
+      								</h:panelGroup>
+      							</h:panelGroup>
+      						</c:if>
+      						<div id="images-holder" class="image-sort">
+      							<c:if test="${item.id == 0}">
+      								<div class="no_entry">(In order to be able to save images, you must first save new entry)</div>
+      							</c:if>
+      						</div>
+      					</div>
+      					
+      					<div class="box-100 light file-sort">
+      						<a class="toggle" href="javascript:;">Open / Close</a>
+      						<h3>Documents <span>(HR)</span></h3>
+      						<input type="hidden" name="file_table" class="file_table" value="site_files_hr" />
+      						<c:if test="${item.id > 0}">
+      							<p:fileUpload update="refreshMe_2"
+      								mode="advanced" dragDropSupport="true" multiple="true"
+      								fileUploadListener="#{operations.handleFileUpload}"
+      								sizeLimit="10000000" fileLimit="300"
+      								label="Choose" uploadLabel="Save" cancelLabel="Cancel"
+      								invalidFileMessage="Unauthorized file"
+      								invalidSizeMessage="Invalid file size"
+      								fileLimitMessage="Uploaded file limit reached">
+      								<f:attribute name="table_id" value="#{item.id}" />
+      								<f:attribute name="type" value="doc" />
+      								<f:attribute name="lng" value="hr" />
+      							</p:fileUpload>
+      							
+      							<h:panelGroup layout="block" id="refreshMe_2">
+      								<div id="file-hr-holder" class="file-sort ui-sortable">
+	      								<ui:repeat var="it" value="#{operations.get_files('hr')}">
+	      									<div class="entry-dokument" id="file_holder_hr_#{it.file_id}">
+	      										<a href="#{operations.sitepath_files}#{it.file_title}" target="_blank">
+	      											<img src="images/doc.png" alt="" style="width:110px;" />
+	      										</a>
+      											<p:commandLink class="del_img" title="Delete" actionListener="#{operations.deleteFilesData()}" onclick="if(!confirm('Are you sure you want to delete entry?')) return false;" oncomplete="$('#file_holder_hr_#{it.file_id}').fadeOut();">
+	      											<f:param name="file_id" value="#{it.file_id}" />
+	      											<f:param name="file_title" value="#{it.file_title}" />
+	      											<p:ajax execute="@form" render="@form" />
+	      											<img src="images/icon-delete-round.png" alt="Delete" />
+      											</p:commandLink>
+	      										<input class="no-sort" type="text" name="file_title_hr_#{it.file_id}" value="#{it.file_title}" placeholder="document title..." />
+	      									</div>
+	      								</ui:repeat>
+		      							<h:panelGroup layout="block" rendered="#{operations.data_view_2 == '[]'}">
+	      									<div class="no_entry">Currently you don't have any documents.</div>
+	      								</h:panelGroup>
+      								</div>
+      							</h:panelGroup>
+      						</c:if>
+      						<div id="file-hr-holder" class="file-sort">
+      							<c:if test="${item.id == 0}">
+      								<div class="no_entry">(In order to be able to save documents, you must first save new entry)</div>
+      							</c:if>
+      						</div>
+      					</div>
+      					
+      					<div class="box-100 light file-sort">
+      						<a class="toggle" href="javascript:;">Open / Close</a>
+      						<h3>Documents <span>(EN)</span></h3>
+      						<input type="hidden" name="file_table" class="file_table" value="site_files_en" />
+      						<c:if test="${item.id > 0}">
+      							<p:fileUpload update="refreshMe_3"
+      								mode="advanced" dragDropSupport="true" multiple="true"
+      								fileUploadListener="#{operations.handleFileUpload}"
+      								sizeLimit="10000000" fileLimit="300"
+      								label="Choose" uploadLabel="Save" cancelLabel="Cancel"
+      								invalidFileMessage="Unauthorized file"
+      								invalidSizeMessage="Invalid file size"
+      								fileLimitMessage="Uploaded file limit reached">
+      								<f:attribute name="table_id" value="#{item.id}" />
+      								<f:attribute name="type" value="doc" />
+      								<f:attribute name="lng" value="en" />
+      							</p:fileUpload>
+      							
+      							<h:panelGroup layout="block" id="refreshMe_3">
+      								<div id="file-en-holder" class="file-sort ui-sortable">
+	      								<ui:repeat var="it" value="#{operations.get_files('en')}">
+	      									<div class="entry-dokument" id="file_holder_en_#{it.file_id}">
+	      										<a href="#{operations.sitepath_files}#{it.file_title}" target="_blank">
+	      											<img src="images/doc.png" alt="" style="width:110px;" />
+	      										</a>
+      											<p:commandLink class="del_img" title="Delete" actionListener="#{operations.deleteFilesData()}" onclick="if(!confirm('Are you sure you want to delete entry?')) return false;" oncomplete="$('#file_holder_en_#{it.file_id}').fadeOut();">
+	      											<f:param name="file_id" value="#{it.file_id}" />
+	      											<f:param name="file_title" value="#{it.file_title}" />
+	      											<p:ajax execute="@form" render="@form" />
+	      											<img src="images/icon-delete-round.png" alt="Delete" />
+      											</p:commandLink>
+	      										<input class="no-sort" type="text" name="file_title_en_#{it.file_id}" value="#{it.file_title}" placeholder="document title..." />
+	      									</div>
+	      								</ui:repeat>
+		      							<h:panelGroup layout="block" rendered="#{operations.data_view_2 == '[]'}">
+	      									<div class="no_entry">Currently you don't have any documents.</div>
+	      								</h:panelGroup>
+      								</div>
+      							</h:panelGroup>
+      						</c:if>
+      						<div id="file-en-holder" class="file-sort">
+      							<c:if test="${item.id == 0}">
+      								<div class="no_entry">(In order to be able to save documents, you must first save new entry)</div>
+      							</c:if>
+      						</div>
+      					</div>
+      					
+      					<div class="box-100 light file-sort">
+      						<a class="toggle" href="javascript:;">Open / Close</a>
+      						<h3>Documents <span>(DE)</span></h3>
+      						<input type="hidden" name="file_table" class="file_table" value="site_files_de" />
+      						<c:if test="${item.id > 0}">
+      							<p:fileUpload update="refreshMe_4"
+      								mode="advanced" dragDropSupport="true" multiple="true"
+      								fileUploadListener="#{operations.handleFileUpload}"
+      								sizeLimit="10000000" fileLimit="300"
+      								label="Choose" uploadLabel="Save" cancelLabel="Cancel"
+      								invalidFileMessage="Unauthorized file"
+      								invalidSizeMessage="Invalid file size"
+      								fileLimitMessage="Uploaded file limit reached">
+      								<f:attribute name="table_id" value="#{item.id}" />
+      								<f:attribute name="type" value="doc" />
+      								<f:attribute name="lng" value="de" />
+      							</p:fileUpload>
+      							
+      							<h:panelGroup layout="block" id="refreshMe_4">
+      								<div id="file-de-holder" class="file-sort ui-sortable">
+	      								<ui:repeat var="it" value="#{operations.get_files('de')}">
+	      									<div class="entry-dokument" id="file_holder_de_#{it.file_id}">
+	      										<a href="#{operations.sitepath_files}#{it.file_title}" target="_blank">
+	      											<img src="images/doc.png" alt="" style="width:110px;" />
+	      										</a>
+      											<p:commandLink class="del_img" title="Delete" actionListener="#{operations.deleteFilesData()}" onclick="if(!confirm('Are you sure you want to delete entry?')) return false;" oncomplete="$('#file_holder_de_#{it.file_id}').fadeOut();">
+	      											<f:param name="file_id" value="#{it.file_id}" />
+	      											<f:param name="file_title" value="#{it.file_title}" />
+	      											<p:ajax execute="@form" render="@form" />
+	      											<img src="images/icon-delete-round.png" alt="Delete" />
+      											</p:commandLink>
+	      										<input class="no-sort" type="text" name="file_title_de_#{it.file_id}" value="#{it.file_title}" placeholder="document title..." />
+	      									</div>
+	      								</ui:repeat>
+		      							<h:panelGroup layout="block" rendered="#{operations.data_view_2 == '[]'}">
+	      									<div class="no_entry">Currently you don't have any documents.</div>
+	      								</h:panelGroup>
+      								</div>
+      							</h:panelGroup>
+      						</c:if>
+      						<div id="file-de-holder" class="file-sort">
+      							<c:if test="${item.id == 0}">
+      								<div class="no_entry">(In order to be able to save documents, you must first save new entry)</div>
+      							</c:if>
+      						</div>
+      					</div>
+      				
+      				</div>
+      				
+      				<div class="box-25 last light">
+      					<a class="toggle" href="javascript:;">Open / Close</a>
+      					<h3>Characteristics</h3>
+      					
+      					<h4>Featured on the front page</h4>
+      					
+      					<h:selectOneMenu value="#{item.front_page}" name="front_page" id="front_page">
+      						<f:selectItem itemValue="no" itemLabel="No" />
+      						<f:selectItem itemValue="yes" selected="selected" itemLabel="Yes" />
+      					</h:selectOneMenu>
+      					
+      					<h4>Category: </h4>
+      					<select name="categories_id" id="categories_id">
+      						<option value="0">-- not in category --</option>
+      						<h:outputText value="#{item.getTreeSelect(item.current_cat_id)}" escape="false" />
+      					</select>
+      					
+      				</div>
+      				<div class="clearfix"></div>
+      				
+      				<div class="save">
+      					<div class="submit-wrapper">
+      						<h:commandButton name="spremi3" class="spremi_s" value="Save" action="#{item.save(0)}">
+      						</h:commandButton>
+      					</div>
+      					<div class="submit-wrapper">
+      						<h:commandButton name="spremi2" class="spremi_pr" value="Save and list all" action="#{item.save(1)}">
+      						</h:commandButton>
+      					</div>
+      				</div>
+      			
+      			</h:form>
+      		
+      		</ui:define>
+      	
+      	</ui:composition>
+      
+      </h:body>
+      
+</html>

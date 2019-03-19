@@ -1,0 +1,203 @@
+.instructions{
+	width:25%;
+}
+.instructions a{
+	width:100%;
+	padding:8px 0 8px 25px;
+}
+
+a.filter-toggle{
+	display:none;
+}
+
+.filters{
+	margin-bottom:5px;
+	display:block;
+}
+
+.filters select{
+	width:auto;
+	margin-right:5px;
+}
+
+.filters .pagination{
+	width:auto;
+	margin-top:0px;
+}
+
+.filters .pagination li a{
+	padding:7px 0 8px;
+	width:30px;
+	text-align:center;
+	background:#f1f1f1;
+	border:1px solid #e1e1e1;
+	color:#7AC143;
+	display:block;
+}
+
+table.list{
+	width:110%;
+}
+
+table.list tbody tr td{
+	vertical-align:top;	
+	height:44px;
+}
+
+table.list tbody tr td.naslov a{
+	margin-bottom:8px;
+	margin-top:0;
+}
+
+table.list tbody tr td .opcije{
+	font-size:12px;
+	display:none;
+	float:none;
+}
+
+table.list tbody tr:hover td .opcije{
+	display:block;
+}
+
+table.list tbody tr td .opcije .edit{
+	margin-right:5px;
+}
+
+table.list tbody tr td .opcije a{
+	height:20px;
+	width:20px;
+	margin-bottom:0;
+	margin-top:0;
+}
+
+.cat-list li div{
+	height:60px;
+}
+
+.cat-list li div.naslov, .cat-list li div.datum{
+	padding:8px 8px 8px 15px;	
+}
+
+.cat-list li div.naslov a{
+	margin-bottom:8px;
+	margin-top:0;
+}
+
+.cat-list li div.naslov .opcije{
+	font-size:12px;
+	display:none;
+	float:none;
+}
+
+.cat-list li:hover div.naslov .opcije{
+	display:block;
+}
+
+.cat-list li div.naslov .opcije .edit{
+	margin-right:5px;
+}
+
+.cat-list li div.naslov .opcije a{
+	height:20px;
+	width:20px;
+	margin-right:5px;
+	margin-bottom:0;
+	margin-top:0;
+}
+
+.cat-list li.ui-state-highlight{
+	height:60px;
+}
+
+.cat-list.dragged li:hover div.naslov .opcije{
+	display:none;
+}
+
+tr.level-1 td.naslov, li.level-1 div.naslov{
+	background-position:17px 9px;
+	padding-left:32px;
+}
+
+tr.level-2 td.naslov, li.level-2 div.naslov{
+	background-position:35px 9px;
+	padding-left:50px;
+}
+
+tr.level-3 td.naslov, li.level-3 div.naslov{
+	background-position:53px 9px;
+	padding-left:68px;
+}
+
+tr.level-4 td.naslov, li.level-4 div.naslov{
+	background-position:71px 9px;
+	padding-left:86px;
+}
+
+tr.level-5 td.naslov, li.level-5 div.naslov{
+	background-position:89px 9px;
+	padding-left:104px;
+}
+
+tr.level-6 td.naslov, li.level-6 div.naslov{
+	background-position:107px 9px;
+	padding-left:122px;
+}
+
+tr.level-7 td.naslov, li.level-7 div.naslov{
+	background-position:125px 9px;
+	padding-left:140px;
+}
+
+tr.level-8 td.naslov, li.level-8 div.naslov{
+	background-position:143px 3px;
+	padding-left:158px;
+}
+
+tr.level-9 td.naslov, li.level-9 div.naslov{
+	background-position:161px 3px;
+	padding-left:176px;
+}
+
+.datum select{
+	width:32.2%;
+}
+
+.save{
+	position:absolute;
+	top:60px;
+	right:20px;
+	left:auto;
+	bottom:auto;
+	background:#4d4d4d;
+	width:auto;
+	overflow:hidden;
+	padding:6px 3px 3px 3px;
+	border-bottom-left-radius:5px;
+	-moz-border-bottom-left-radius:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	-moz-border-bottom-right-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-top-left-radius:0px;
+	-moz-border-top-left-radius:0px;
+	-webkit-border-top-left-radius:0px;
+	border-top-right-radius:0px;
+	-moz-border-top-right-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-box-shadow:inset 0px 5px 5px -3px #000000;
+	-webkit-box-shadow:inset 0px 5px 5px -3px #000000;
+	box-shadow:inset 0px 5px 5px -3px #000000;
+}
+
+.save.scrolled{
+	position:fixed;
+	right:36px;
+	top:0px;
+	-moz-box-shadow:0px 5px 15px -5px #4d4d4d;
+	-webkit-box-shadow:0px 5px 15px -5px #4d4d4d;
+	box-shadow:0px 5px 15px -4px #4d4d4d;
+}
+
+.entry input:not([type='submit']), .entry textarea{
+	width:670px;
+}
